@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, Menu, ipcMain } from 'electron';
+import { app, BrowserWindow, globalShortcut, Menu, MenuItem, ipcMain } from 'electron';
 import started from 'electron-squirrel-startup';
 import path from 'node:path'
 
@@ -57,7 +57,33 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // app.dock.setIcon( 'assets/favicon.svg');
+  const menu = Menu.getApplicationMenu()
+  console.log(menu)
+  // 设置 help 链接
 
+  menu.items[menu.items.length - 1].submenu.items[0].click = async () => {
+    const { shell } = require('electron')
+    await shell.openExternal('https://src.escript.cn/deepseek.html#download')
+  }
+
+
+  menu.items[menu.items.length - 1].submenu.items[1].visible=false
+  menu.items[menu.items.length - 1].submenu.items[2].visible=false
+  menu.items[menu.items.length - 1].submenu.items[3].visible=false
+
+
+  // const st = new MenuItem({
+  //   label: '设置',
+  //   click: () => {
+  //     createSetting();
+  //   },
+  // })
+  // menu.items[1].submenu.insert(0, st)
+
+  Menu.setApplicationMenu(menu)
+
+
+  registerShortcut('Command+U');
   console.log('app.whenReady')
   createWindow();
   // createMenu()
@@ -211,7 +237,7 @@ function createMenu() {
           label: 'Learn More',
           click: async () => {
             const { shell } = require('electron')
-            await shell.openExternal('https://electronjs.org')
+            await shell.openExternal('https://src.escript.cn/deepseek.html#download')
           }
         }
       ]
