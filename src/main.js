@@ -1,7 +1,8 @@
 import { app, BrowserWindow, globalShortcut, Menu, ipcMain } from 'electron';
 import started from 'electron-squirrel-startup';
-import path  from 'node:path'
+import path from 'node:path'
 
+const isMac = process.platform === 'darwin'
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit();
@@ -25,7 +26,8 @@ const createWindow = () => {
     // },
   });
 
-  const customUserAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.6834.159 Safari/537.36';
+  const customUserAgent = isMac ? 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.6834.159 Safari/537.36'
+    : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0'
   mainWindow.webContents.setUserAgent(customUserAgent);
 
 
@@ -106,7 +108,6 @@ function focusOnInput(win) {
 
 
 function createMenu() {
-  const isMac = process.platform === 'darwin'
 
   const template = [
     // { role: 'appMenu' }
@@ -234,7 +235,7 @@ function createSetting() {
       // preload: path.join(__dirname, 'preload.js')
       // }
       // webPreferences: {
-        preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
   settingWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
