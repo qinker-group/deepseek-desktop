@@ -26,19 +26,19 @@
  * ```
  */
 
-import * as a  from 'electron'
-// const  a = require('electron');
-console.log(a)
-// import './index.css';
+// import * as a  from 'electron'
+// // const  a = require('electron');
+// console.log(a)
+// // import './index.css';
 
-// console.log('👋 This message is being logged by "renderer.js", included via webpack');
+// // console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
 
-document.getElementById('shortcut-form').addEventListener('submit', (event) => {
-  console.log('submit');
-  event.preventDefault();
-  const modifiers = Array.from(document.getElementById('modifiers').selectedOptions).map(option => option.value);
-  const key = document.getElementById('key').value;
-  const shortcut = [...modifiers, key].join('+');
-  ipcRenderer.send('set-shortcut', shortcut);
-});
+// document.getElementById('shortcut-form').addEventListener('submit', (event) => {
+//   console.log('submit');
+//   event.preventDefault();
+//   const modifiers = Array.from(document.getElementById('modifiers').selectedOptions).map(option => option.value);
+//   const key = document.getElementById('key').value;
+//   const shortcut = [...modifiers, key].join('+');
+//   ipcRenderer.send('set-shortcut', shortcut);
+// });
