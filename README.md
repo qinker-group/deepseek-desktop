@@ -27,5 +27,5 @@
 ### 个性化定制
 根据你的使用习惯自定义界面和功能，打造专属你的效率工具。
 
-(https://src.escript.cn/deepseek.html)[立即下载 DeepSeek 桌面版，开启高效新生活！]
+[立即下载 DeepSeek 桌面版，开启高效新生活！](https://src.escript.cn/deepseek.html)
 
