@@ -108,7 +108,11 @@
       const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
 
       if (macosPlatforms.indexOf(platform) !== -1) {
-        return 'macOS';
+        if (userAgent.includes('Intel')) {
+          return 'macOS1';
+        } else {
+          return 'macOS2';
+        }
       } else if (windowsPlatforms.indexOf(platform) !== -1) {
         return 'Windows';
       } else {
@@ -121,7 +125,7 @@
       const ctrlKey = document.getElementById('ctrl-key');
       const cmdKey = document.getElementById('cmd-key');
 
-      if (os === 'macOS') {
+      if (os.indexOf('macOS') === 0) {
         ctrlKey.style.display = 'none';
         cmdKey.style.display = 'inline-block';
       } else {
@@ -134,9 +138,12 @@
       const os = detectOS();
       const windowsBtn = document.getElementById('windows-download-btn');
       const macosBtn = document.getElementById('macos-download-btn');
+      const intelBtn = document.getElementById('intel-download-btn');
 
-      if (os === 'macOS') {
+      if (os === 'macOS1') {
         macosBtn.style.backgroundColor = '#3498db';
+      } else if (os === 'macOS2') {
+        intelBtn.style.backgroundColor = '#3498db';
       } else if (os === 'Windows') {
         windowsBtn.style.backgroundColor = '#3498db';
       }
@@ -200,8 +207,12 @@
   <div class="download-section">
     <h2>立即体验效率革命</h2>
     <div style="display: flex; justify-content: center; gap: 20px;">
-      <a target="_blank" href="https://pan.baidu.com/s/1BU62akklkOpY8RPRSl8VtA?pwd=wc56" id="windows-download-btn" class="download-btn">免费下载 (Windows)</a>
-      <a target="_blank" href="https://pan.baidu.com/s/1vnSlL3kKtlbf3Fi4Xk08VQ?pwd=s83k" id="macos-download-btn" class="download-btn">免费下载 (macOS Apple Silicon)</a>
+      <a target="_blank" href="https://pan.baidu.com/s/1eA5YcPbhn0IZImLq5W5IHA?pwd=khuw" id="windows-download-btn"
+        class="download-btn">免费下载 (Windows)</a>
+      <a target="_blank" href="https://pan.baidu.com/s/1j6941S07MvCM6G12x8S7YQ?pwd=vrcp" id="macos-download-btn"
+        class="download-btn">免费下载 (macOS Apple Silicon)</a>
+      <a target="_blank" href="https://pan.baidu.com/s/1R_wiKC1votaQ7s3zhK8luw?pwd=p2hb" id="intel-download-btn"
+        class="download-btn">免费下载 (macOS Intel)</a>
     </div>
   </div>
 
@@ -211,7 +222,16 @@
     <p style="color: #666; margin-top: 10px;">扫码回复“DeepSeek桌面版”进入交流群</p>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?67c9dbdc5ee5e905be7a1e91fa7b059e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 </body>
 
 </html>
