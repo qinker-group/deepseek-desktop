@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DeepSeek 桌面版 - 你的效率新选择</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 0;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+
+    .shortcut-section {
+      text-align: center;
+      margin: 40px 0;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .shortcut-key {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #3498db;
+      color: white;
+      border-radius: 8px;
+      font-size: 1.5em;
+      margin: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .features {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .feature-card {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .download-btn {
+      background-color: #787878;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: all 0.3s;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background-color: #3498db;
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+
+    .highlight {
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    .shortcut-key {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #3498db;
+      color: white;
+      border-radius: 8px;
+      font-size: 1.5em;
+      margin: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      min-width: 80px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function detectOS() {
+      const userAgent = window.navigator.userAgent;
+      const platform = window.navigator.platform;
+      const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+      const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        return 'macOS';
+      } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        return 'Windows';
+      } else {
+        return 'Unknown';
+      }
+    }
+
+    function updateShortcutDisplay() {
+      const os = detectOS();
+      const ctrlKey = document.getElementById('ctrl-key');
+      const cmdKey = document.getElementById('cmd-key');
+
+      if (os === 'macOS') {
+        ctrlKey.style.display = 'none';
+        cmdKey.style.display = 'inline-block';
+      } else {
+        ctrlKey.style.display = 'inline-block';
+        cmdKey.style.display = 'none';
+      }
+    }
+
+    function highlightDownloadButton() {
+      const os = detectOS();
+      const windowsBtn = document.getElementById('windows-download-btn');
+      const macosBtn = document.getElementById('macos-download-btn');
+
+      if (os === 'macOS') {
+        macosBtn.style.backgroundColor = '#3498db';
+      } else if (os === 'Windows') {
+        windowsBtn.style.backgroundColor = '#3498db';
+      }
+    }
+
+    window.onload = function () {
+      updateShortcutDisplay();
+      highlightDownloadButton();
+    };
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <h1>DeepSeek 桌面版 正式发布</h1>
+    <h3>告别网页和APP，开启效率新时代</h3>
+  </div>
+
+  <!-- 新增快捷键提示模块 -->
+  <div class="shortcut-section">
+    <h2>随时随地，一键唤醒</h2>
+    <p>在任何界面按下快捷键，立即唤醒DeepSeek</p>
+    <div>
+
+      <span id="ctrl-key" class="shortcut-key">Ctrl</span>
+      <span id="cmd-key" class="shortcut-key" style="display: none;">⌘ Command</span>
+      <span style="font-size: 1.5em;">+</span>
+      <span class="shortcut-key">U</span>
+    </div>
+    <p style="margin-top: 20px; color: #666;">
+      <small>自定义快捷键开发中...</small>
+    </p>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <h2>🚀 一键直达</h2>
+      <p>独立运行无需浏览器，秒速启动即用即走</p>
+    </div>
+    <div class="feature-card">
+      <h2>💎 功能整合</h2>
+      <p>网页版与APP功能完美融合，操作体验全面提升</p>
+    </div>
+    <div class="feature-card">
+      <h2>🎨 极致体验</h2>
+      <p>专为桌面优化的界面设计，流畅操作得心应手</p>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <h2>📈 效率办公</h2>
+      <p>文档处理 × 日程管理 × 任务协同<br>工作效率提升300%</p>
+    </div>
+    <div class="feature-card">
+      <h2>🌍 便捷生活</h2>
+      <p>信息查询 × 新闻阅读 × 影音娱乐<br>全方位数字生活体验</p>
+    </div>
+  </div>
+
+  <div class="download-section">
+    <h2>立即体验效率革命</h2>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+      <a target="_blank" href="https://pan.baidu.com/s/1BU62akklkOpY8RPRSl8VtA?pwd=wc56" id="windows-download-btn" class="download-btn">免费下载 (Windows)</a>
+      <a target="_blank" href="https://pan.baidu.com/s/1vnSlL3kKtlbf3Fi4Xk08VQ?pwd=s83k" id="macos-download-btn" class="download-btn">免费下载 (macOS Apple Silicon)</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h2>加入交流群</h2>
+    <img src="https://src.escript.cn/qinker-wx.png" alt="微信二维码" style="max-width: 200px; border-radius: 10px;">
+    <p style="color: #666; margin-top: 10px;">扫码回复“DeepSeek桌面版”进入交流群</p>
+  </div>
+
+  
+</body>
+
+</html>

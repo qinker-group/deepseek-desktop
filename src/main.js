@@ -37,7 +37,7 @@ const createWindow = () => {
   // mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   mainWindow.loadURL('https://chat.deepseek.com/');
   // Register a shortcut listener for Command+U to open a new window
-  app.dock.show()
+  app?.dock?.show()
   focusOnInput(mainWindow)
 
 
@@ -56,20 +56,20 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  // app.dock.setIcon( 'assets/favicon.svg');
-  const menu = Menu.getApplicationMenu()
-  console.log(menu)
-  // 设置 help 链接
+  // // app?.dock?.setIcon( 'assets/favicon.svg');
+  // const menu = Menu.getApplicationMenu()
+  // console.log(menu)
+  // // 设置 help 链接
 
-  menu.items[menu.items.length - 1].submenu.items[0].click = async () => {
-    const { shell } = require('electron')
-    await shell.openExternal('https://src.escript.cn/deepseek.html#download')
-  }
+  // menu.items[menu.items.length - 1].submenu.items[0].click = async () => {
+  //   const { shell } = require('electron')
+  //   await shell.openExternal('https://src.escript.cn/deepseek.html#download')
+  // }
 
 
-  menu.items[menu.items.length - 1].submenu.items[1].visible=false
-  menu.items[menu.items.length - 1].submenu.items[2].visible=false
-  menu.items[menu.items.length - 1].submenu.items[3].visible=false
+  // menu.items[menu.items.length - 1].submenu.items[1].visible=false
+  // menu.items[menu.items.length - 1].submenu.items[2].visible=false
+  // menu.items[menu.items.length - 1].submenu.items[3].visible=false
 
 
   // const st = new MenuItem({
@@ -80,10 +80,10 @@ app.whenReady().then(() => {
   // })
   // menu.items[1].submenu.insert(0, st)
 
-  Menu.setApplicationMenu(menu)
+  // Menu.setApplicationMenu(menu)
 
 
-  registerShortcut('Command+U');
+  registerShortcut('CommandOrControl+U');
   console.log('app.whenReady')
   createWindow();
   // createMenu()
@@ -93,7 +93,7 @@ app.whenReady().then(() => {
     console.log('app.on activate')
     if (mainWindow) {
       mainWindow.show()
-      app.dock.show()
+      app?.dock?.show()
       mainWindow.focus()
       setTimeout(() => {
         focusOnInput(mainWindow)
@@ -268,7 +268,7 @@ function createSetting() {
 
   settingWindow.setAlwaysOnTop(true, 'screen-saver');
   settingWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
-  app.dock.show()
+  app?.dock?.show()
   settingWindow.focus()
 }
 
@@ -291,7 +291,7 @@ const registerShortcut = (shortcut) => {
       mainWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
 
       mainWindow.show()
-      app.dock.show()
+      app?.dock?.show()
 
       mainWindow.focus()
       setTimeout(() => {
